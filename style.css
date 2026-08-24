@@ -439,98 +439,15 @@ body {
   box-shadow: 0 0 8px var(--neon-blue);
 }
 
-/* --- Адаптация для горизонтального режима телефона (Альбомная ориентация) --- */
+/* =========================================================
+   УЛЬТРА-КОМПАКТНАЯ ВЕРСИЯ ДЛЯ ТЕЛЕФОНОВ (ПОРТРЕТ И ЛАНДШАФТ)
+   ========================================================= */
 
-/* Применяем стили ТОЛЬКО когда телефон повернут горизонтально */
-@media (max-width: 991px) and (orientation: landscape) {
-  
-  /* Уменьшаем заголовок, чтобы не занимал пол-экрана */
+@media (max-width: 900px) {
+  /* Сжимаем внешние отступы страницы */
   .app-container {
-    padding: 5px 0;
-  }
-
-  .title {
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-  }
-
-  .subtitle {
-    font-size: 0.75rem;
-  }
-
-  /* Самое важное: Задаем МИНИМАЛЬНУЮ ширину для сетки, чтобы элементы не сжимались */
-  .periodic-table {
-    min-width: 1200px; /* Здесь можно поиграть с числом. Попробуй 1100 или 1300 */
-    gap: 4px; /* Немного уменьшаем зазоры */
-  }
-
-  /* Делаем прокрутку в горизонтальном режиме плавной */
-  .table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 15px; /* Место для скроллбара */
-  }
-
-  /* Немного уменьшаем карточки элементов */
-  .element-card {
-    padding: 3px;
-  }
-
-  .sym {
-    font-size: 1.1rem;
-  }
-
-  .name, .mass {
-    font-size: 0.6rem;
-  }
-
-  /* Адаптация модального окна для горизонтального режима */
-  .modal-card {
-    width: 96%;
-    max-height: 92vh; /* Окно не должно вылезать за пределы экрана */
-    overflow-y: auto; /* Добавляем ВЕРТИКАЛЬНУЮ прокрутку внутри окна */
-    padding: 12px 20px;
-  }
-
-  .modal-header {
-    gap: 12px;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-  }
-
-  .m-name {
-    font-size: 1.4rem;
-  }
-
-  /* Модель атома и инфо-грид делаем в одну колонку */
-  .modal-body {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    align-items: center;
-  }
-
-  /* Модель атома делаем меньше */
-  #atom-canvas {
-    width: 120px;
-    height: 120px;
-  }
-
-  /* Уменьшаем шрифты в инфо-гриде */
-  .info-value {
-    font-size: 0.85rem;
-  }
-
-  .close-btn {
-    top: 10px;
-    right: 15px;
-    font-size: 1.6rem;
-  }
-}
-/* Вмещение всех 8 групп в горизонтальном режиме смартфона */
-@media (orientation: landscape) and (max-height: 500px) {
-  .app-container {
-    padding: 2px;
     width: 100vw;
+    padding: 4px 2px;
   }
 
   .header {
@@ -538,40 +455,69 @@ body {
   }
 
   .title {
-    font-size: 0.85rem;
+    font-size: 0.9rem !important;
     letter-spacing: 1px;
   }
 
   .subtitle {
-    display: none; /* Скрываем подзаголовок для экономии вертикального места */
+    font-size: 0.65rem !important;
+    margin-top: 1px;
   }
 
   .table-wrapper {
     padding: 0;
-    overflow-x: hidden; /* Отключаем прокрутку, сжимая сетку ровно по экрану */
+    width: 100vw;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
+  /* РЕЗКОЕ СЖАТИЕ СЕТКИ: уменьшаем высоту строк с 70px до 22px! */
   .periodic-table {
-    min-width: 100% !important;
-    width: 100%;
-    gap: 2px; /* Минимальный зазор между ячейками */
+    display: grid !important;
+    grid-template-columns: repeat(18, minmax(18px, 1fr)) !important;
+    grid-template-rows: repeat(10, minmax(22px, 1fr)) !important;
+    gap: 1.5px !important;
+    min-width: 0 !important;
+    width: 100% !important;
   }
 
+  /* Сжимаем карточки элементов до минимума */
   .element-card {
-    padding: 1px 2px;
-    border-radius: 3px;
+    padding: 1px !important;
+    border-radius: 3px !important;
+    border-width: 1px !important;
+    border-left-width: 2px !important; /* Сохраняем цвет категории */
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
   }
 
+  /* Шрифт символа и номера */
   .num {
-    font-size: 0.5rem;
+    font-size: 0.4rem !important;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    opacity: 0.8;
   }
 
   .sym {
-    font-size: 0.75rem;
+    font-size: 0.65rem !important;
+    line-height: 1;
+    font-weight: 700;
   }
 
-  .name, .mass {
-    font-size: 0.45rem;
+  .name {
+    font-size: 0.38rem !important;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  /* Скрываем массу на телефонах — она не помещается */
+  .mass {
+    display: none !important;
   }
 }
-

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Таблица Менделеева — Классическая форма СНГ (8 групп)</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Космический фон с неоновыми частицами -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="app-container">
+    <header class="header">
+      <h1 class="title">ПЕРИОДИЧЕСКАЯ СИСТЕМА ЭЛЕМЕНТОВ Д.И. МЕНДЕЛЕЕВА</h1>
+      <p class="subtitle">Классическая 8-группная система (СНГ) • 118 Элементов</p>
+    </header>
+
+    <!-- Основная сетка таблицы -->
+    <main class="table-wrapper">
+      <div id="periodic-table" class="short-table"></div>
+
+      <!-- Блок Лантаноидов и Актиноидов -->
+      <div class="f-block-container">
+        <div class="f-row">
+          <div class="f-label">* Лантаноиды</div>
+          <div id="lanthanides" class="f-elements"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-label">** Актиноиды</div>
+          <div id="actinides" class="f-elements"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Модальное окно с информацией об элементе -->
+  <div id="modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button id="modal-close" class="close-btn">&times;</button>
+      
+      <div class="modal-header">
+        <div class="element-badge">
+          <span id="m-number" class="m-number">1</span>
+          <span id="m-symbol" class="m-symbol">H</span>
+        </div>
+        <div class="element-titles">
+          <h2 id="m-name" class="m-name">Водород</h2>
+          <span id="m-category" class="m-category">Неметалл • Подгруппа А</span>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <!-- 3D Анимация атома/молекулы -->
+        <div class="atom-view">
+          <canvas id="atom-canvas" width="220" height="220"></canvas>
+          <div class="atom-caption">Квантовая модель атомной орбитали</div>
+        </div>
+
+        <!-- Подробная информация (Период, Ряд, Группа, Валентность) -->
+        <div class="info-grid">
+          <div class="info-item highlight">
+            <span class="info-label">Высшая валентность</span>
+            <span id="m-valence" class="info-value">I</span>
+          </div>
+          <div class="info-item highlight">
+            <span class="info-label">Группа / Подгруппа</span>
+            <span id="m-group" class="info-value">I группа (А)</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Период / Ряд</span>
+            <span id="m-period-row" class="info-value">1 период / 1 ряд</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Атомная масса</span>
+            <span id="m-mass" class="info-value">1.008</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Высший оксид</span>
+            <span id="m-oxide" class="info-value">R₂O</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Летучее водородное соед.</span>
+            <span id="m-hydride" class="info-value">—</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Электронная конфигурация</span>
+            <span id="m-config" class="info-value">1s¹</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Плотность</span>
+            <span id="m-density" class="info-value">0.00008987 г/см³</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <p id="m-desc" class="m-desc">Описание элемента...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

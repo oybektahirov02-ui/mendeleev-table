@@ -439,90 +439,90 @@ body {
   box-shadow: 0 0 8px var(--neon-blue);
 }
 
-/* Стили для экранов шириной до 768px (смартфоны и планшеты) */
-@media (max-width: 768px) {
+/* --- Адаптация для горизонтального режима телефона (Альбомная ориентация) --- */
+
+/* Применяем стили ТОЛЬКО когда телефон повернут горизонтально */
+@media (max-width: 991px) and (orientation: landscape) {
+  
+  /* Уменьшаем заголовок, чтобы не занимал пол-экрана */
   .app-container {
-    padding: 10px 5px;
+    padding: 5px 0;
   }
 
   .title {
-    font-size: 1.2rem;
-    letter-spacing: 1.5px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
   }
 
   .subtitle {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
-  /* Задаем жесткий минимум ширины сетки, чтобы элементы не сплющивались */
+  /* Самое важное: Задаем МИНИМАЛЬНУЮ ширину для сетки, чтобы элементы не сжимались */
   .periodic-table {
-    min-width: 920px;
-    gap: 3px;
+    min-width: 1200px; /* Здесь можно поиграть с числом. Попробуй 1100 или 1300 */
+    gap: 4px; /* Немного уменьшаем зазоры */
   }
 
+  /* Делаем прокрутку в горизонтальном режиме плавной */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 15px; /* Место для скроллбара */
+  }
+
+  /* Немного уменьшаем карточки элементов */
   .element-card {
     padding: 3px;
-    border-radius: 5px;
-  }
-
-  .num {
-    font-size: 0.65rem;
   }
 
   .sym {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .name, .mass {
-    font-size: 0.55rem;
+    font-size: 0.6rem;
   }
 
-  /* Адаптация модального окна под вертикальный экран */
+  /* Адаптация модального окна для горизонтального режима */
   .modal-card {
-    width: 92%;
-    max-height: 88vh;
-    overflow-y: auto;
-    padding: 16px;
+    width: 96%;
+    max-height: 92vh; /* Окно не должно вылезать за пределы экрана */
+    overflow-y: auto; /* Добавляем ВЕРТИКАЛЬНУЮ прокрутку внутри окна */
+    padding: 12px 20px;
   }
 
   .modal-header {
     gap: 12px;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-  }
-
-  .element-badge {
-    padding: 6px 12px;
-  }
-
-  .m-symbol {
-    font-size: 1.6rem;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
   }
 
   .m-name {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
+  /* Модель атома и инфо-грид делаем в одну колонку */
   .modal-body {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
+    align-items: center;
   }
 
+  /* Модель атома делаем меньше */
   #atom-canvas {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
 
-  .info-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-
-  .info-item {
-    padding: 6px 8px;
-  }
-
+  /* Уменьшаем шрифты в инфо-гриде */
   .info-value {
     font-size: 0.85rem;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 15px;
+    font-size: 1.6rem;
   }
 }

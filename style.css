@@ -526,3 +526,51 @@ body {
     font-size: 1.6rem;
   }
 }
+/* Вмещение всех 8 групп в горизонтальном режиме смартфона */
+@media (orientation: landscape) and (max-height: 500px) {
+  .app-container {
+    padding: 2px;
+    width: 100vw;
+  }
+
+  .header {
+    margin-bottom: 4px;
+  }
+
+  .title {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    display: none; /* Скрываем подзаголовок для экономии вертикального места */
+  }
+
+  .table-wrapper {
+    padding: 0;
+    overflow-x: hidden; /* Отключаем прокрутку, сжимая сетку ровно по экрану */
+  }
+
+  .periodic-table {
+    min-width: 100% !important;
+    width: 100%;
+    gap: 2px; /* Минимальный зазор между ячейками */
+  }
+
+  .element-card {
+    padding: 1px 2px;
+    border-radius: 3px;
+  }
+
+  .num {
+    font-size: 0.5rem;
+  }
+
+  .sym {
+    font-size: 0.75rem;
+  }
+
+  .name, .mass {
+    font-size: 0.45rem;
+  }
+}
